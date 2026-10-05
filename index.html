@@ -12,16 +12,24 @@
   box-sizing:border-box;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   min-height:100vh;
   font-family:Georgia, "Times New Roman", serif;
   background:
     radial-gradient(circle at 50% 20%, #fff 0%, #ffe5ef 35%, #ffc1d8 70%, #ff91b8 100%);
-  overflow:hidden;
   color:#8d1647;
+  overflow-x:hidden;
+  overflow-y:auto;
 }
 
-/* PAGE LOGIN */
+/* =========================
+   LOGIN
+========================= */
+
 .login{
   position:fixed;
   inset:0;
@@ -38,7 +46,7 @@ body{
   padding:45px 30px;
   text-align:center;
   border-radius:30px;
-  background:rgba(255,255,255,.92);
+  background:#ffffff;
   box-shadow:0 20px 60px rgba(180,30,90,.25);
   animation:boxIn 1s ease;
 }
@@ -52,6 +60,7 @@ body{
 .login-box p{
   color:#a34b70;
   margin-bottom:25px;
+  line-height:1.6;
 }
 
 input{
@@ -64,6 +73,11 @@ input{
   font-size:16px;
   color:#8d1647;
   background:#fff7fa;
+}
+
+input:focus{
+  border-color:#d81b60;
+  box-shadow:0 0 0 4px #ffd9e7;
 }
 
 button{
@@ -92,24 +106,29 @@ button:hover{
   display:none;
 }
 
-/* LOVE PAGE */
+/* =========================
+   LOVE PAGE
+========================= */
+
 .love-page{
   display:none;
-  position:fixed;
-  inset:0;
+  position:relative;
+  min-height:100vh;
+  width:100%;
   overflow:hidden;
   text-align:center;
-  padding:25px;
+  padding:25px 15px 70px;
 }
 
 .content{
   position:relative;
   z-index:5;
-  min-height:100%;
+  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  padding:30px 0;
 }
 
 .small-title{
@@ -128,11 +147,15 @@ h2{
   animation:titleIn 1.8s ease;
 }
 
+/* =========================
+   BIG HEART
+========================= */
+
 .heart{
   position:relative;
   width:110px;
   height:100px;
-  margin:5px auto 25px;
+  margin:5px auto 30px;
   animation:heartbeat 1.2s infinite;
 }
 
@@ -159,11 +182,15 @@ h2{
   transform-origin:100% 100%;
 }
 
+/* =========================
+   LETTER
+========================= */
+
 .letter{
   width:min(700px,95%);
-  padding:35px 30px;
+  padding:40px 32px;
   border-radius:28px;
-  background:rgba(255,255,255,.9);
+  background:#ffffff;
   border:1px solid #ffd0df;
   box-shadow:
     0 20px 70px rgba(170,25,85,.2),
@@ -173,19 +200,22 @@ h2{
 
 .letter p{
   font-size:clamp(18px,3vw,24px);
-  line-height:1.8;
+  line-height:1.9;
   color:#7e2449;
 }
 
 .signature{
-  margin-top:25px;
-  font-size:34px;
+  margin-top:30px;
+  font-size:36px;
   font-style:italic;
   font-weight:bold;
   color:#d81b60;
 }
 
-/* PETALS */
+/* =========================
+   PETALS
+========================= */
+
 .petal{
   position:absolute;
   top:-50px;
@@ -195,16 +225,60 @@ h2{
   border-radius:100% 0 100% 0;
   opacity:.8;
   animation:fall linear infinite;
+  z-index:1;
 }
 
-.petal:nth-child(1){left:5%;animation-duration:8s;animation-delay:0s}
-.petal:nth-child(2){left:15%;animation-duration:10s;animation-delay:2s}
-.petal:nth-child(3){left:27%;animation-duration:7s;animation-delay:1s}
-.petal:nth-child(4){left:40%;animation-duration:11s;animation-delay:3s}
-.petal:nth-child(5){left:53%;animation-duration:8s;animation-delay:1s}
-.petal:nth-child(6){left:65%;animation-duration:9s;animation-delay:4s}
-.petal:nth-child(7){left:77%;animation-duration:7s;animation-delay:2s}
-.petal:nth-child(8){left:90%;animation-duration:10s;animation-delay:0s}
+.petal:nth-child(1){
+  left:5%;
+  animation-duration:8s;
+  animation-delay:0s;
+}
+
+.petal:nth-child(2){
+  left:15%;
+  animation-duration:10s;
+  animation-delay:2s;
+}
+
+.petal:nth-child(3){
+  left:27%;
+  animation-duration:7s;
+  animation-delay:1s;
+}
+
+.petal:nth-child(4){
+  left:40%;
+  animation-duration:11s;
+  animation-delay:3s;
+}
+
+.petal:nth-child(5){
+  left:53%;
+  animation-duration:8s;
+  animation-delay:1s;
+}
+
+.petal:nth-child(6){
+  left:65%;
+  animation-duration:9s;
+  animation-delay:4s;
+}
+
+.petal:nth-child(7){
+  left:77%;
+  animation-duration:7s;
+  animation-delay:2s;
+}
+
+.petal:nth-child(8){
+  left:90%;
+  animation-duration:10s;
+  animation-delay:0s;
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
 
 .float-heart{
   position:absolute;
@@ -213,68 +287,172 @@ h2{
   font-size:25px;
   animation:floatUp 7s linear infinite;
   opacity:.65;
+  z-index:2;
 }
 
+/* =========================
+   ANIMATIONS
+========================= */
+
 @keyframes heartbeat{
-  0%,100%{transform:scale(1)}
-  15%{transform:scale(1.15)}
-  30%{transform:scale(1)}
-  45%{transform:scale(1.12)}
+
+  0%,100%{
+    transform:scale(1);
+  }
+
+  15%{
+    transform:scale(1.15);
+  }
+
+  30%{
+    transform:scale(1);
+  }
+
+  45%{
+    transform:scale(1.12);
+  }
 }
 
 @keyframes fall{
+
   0%{
     transform:translateY(-50px) rotate(0deg);
   }
+
   100%{
-    transform:translateY(110vh) translateX(100px) rotate(720deg);
+    transform:
+      translateY(110vh)
+      translateX(100px)
+      rotate(720deg);
   }
 }
 
 @keyframes floatUp{
+
   0%{
-    transform:translateY(0) scale(.7) rotate(0);
+    transform:
+      translateY(0)
+      scale(.7)
+      rotate(0);
     opacity:0;
   }
-  20%{opacity:.7}
+
+  20%{
+    opacity:.7;
+  }
+
   100%{
-    transform:translateY(-110vh) scale(1.4) rotate(360deg);
+    transform:
+      translateY(-110vh)
+      scale(1.4)
+      rotate(360deg);
     opacity:0;
   }
 }
 
 @keyframes boxIn{
-  from{opacity:0;transform:scale(.8)}
-  to{opacity:1;transform:scale(1)}
+
+  from{
+    opacity:0;
+    transform:scale(.8);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
 }
 
 @keyframes fadeDown{
-  from{opacity:0;transform:translateY(-30px)}
-  to{opacity:1;transform:translateY(0)}
+
+  from{
+    opacity:0;
+    transform:translateY(-30px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 @keyframes titleIn{
-  from{opacity:0;transform:scale(.5)}
-  to{opacity:1;transform:scale(1)}
+
+  from{
+    opacity:0;
+    transform:scale(.5);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
 }
 
 @keyframes letterIn{
-  from{opacity:0;transform:translateY(50px)}
-  to{opacity:1;transform:translateY(0)}
+
+  from{
+    opacity:0;
+    transform:translateY(50px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-@media(max-width:500px){
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
   .login-box{
     padding:35px 22px;
   }
 
+  .login-box h1{
+    font-size:30px;
+  }
+
+  .love-page{
+    padding:20px 12px 70px;
+  }
+
+  .content{
+    justify-content:flex-start;
+    padding-top:60px;
+  }
+
+  .small-title{
+    font-size:14px;
+    letter-spacing:3px;
+  }
+
+  h2{
+    font-size:48px;
+    margin-bottom:20px;
+  }
+
+  .heart{
+    transform:scale(.85);
+    margin-bottom:20px;
+  }
+
   .letter{
-    padding:25px 20px;
+    width:96%;
+    padding:28px 20px;
+    margin-bottom:30px;
   }
 
   .letter p{
     font-size:18px;
-    line-height:1.65;
+    line-height:1.8;
+  }
+
+  .signature{
+    font-size:32px;
   }
 }
 </style>
@@ -282,11 +460,20 @@ h2{
 
 <body>
 
-<!-- LOGIN -->
+<!-- =========================
+     LOGIN
+========================= -->
+
 <div class="login" id="login">
+
   <div class="login-box">
+
     <h1>❤️ Nade & Baba ❤️</h1>
-    <p>Entre le petit code secret pour découvrir ton message...</p>
+
+    <p>
+      Entre le petit code secret pour découvrir
+      ton message...
+    </p>
 
     <input
       type="password"
@@ -295,18 +482,27 @@ h2{
       autocomplete="off"
     >
 
-    <button onclick="openLove()">Découvrir ❤️</button>
+    <button onclick="openLove()">
+      Découvrir ❤️
+    </button>
 
     <div class="error" id="error">
       Code incorrect ❤️
     </div>
+
   </div>
+
 </div>
 
-<!-- LOVE PAGE -->
+
+<!-- =========================
+     LOVE PAGE
+========================= -->
+
 <div class="love-page" id="lovePage">
 
   <!-- PETALS -->
+
   <div class="petal"></div>
   <div class="petal"></div>
   <div class="petal"></div>
@@ -315,6 +511,7 @@ h2{
   <div class="petal"></div>
   <div class="petal"></div>
   <div class="petal"></div>
+
 
   <div class="content">
 
@@ -322,107 +519,233 @@ h2{
       POUR TOI, NADE ❤️
     </div>
 
-    <h2>Je t'aime</h2>
+    <h2>
+      Je t'aime
+    </h2>
+
+
+    <!-- BIG HEART -->
 
     <div class="heart"></div>
 
+
+    <!-- LETTER -->
+
     <div class="letter">
+
       <p>
-        Nade, je veux simplement que tu saches à quel point
-        tu es belle et spéciale pour moi. ❤️
+
+        Nade, je veux simplement que tu saches
+        à quel point tu es belle et spéciale
+        pour moi. ❤️
+
         <br><br>
-        Je t'aime pour la personne que tu es, pour ton sourire,
-        pour ta façon d'être et pour tout ce qui te rend unique.
+
+        Je t'aime pour la personne que tu es,
+        pour ton sourire, pour ta façon d'être
+        et pour tout ce qui te rend unique.
+
         <br><br>
-        Je veux t'avoir dans ma vie, aujourd'hui, demain
-        et pour longtemps. Peu importe les moments,
+
+        Je veux t'avoir dans ma vie,
+        aujourd'hui, demain et pour longtemps.
+
+        <br><br>
+
+        Peu importe les moments,
         je veux continuer à avancer avec toi.
+
         <br><br>
-        Tu es une personne que je veux garder précieusement
-        dans ma vie. ❤️
+
+        Tu es une personne que je veux garder
+        précieusement dans ma vie. ❤️
+
+        <br><br>
+
+        Et si je devais choisir encore une fois,
+        je te choisirais encore.
+
       </p>
+
 
       <div class="signature">
         Baba ❤️
       </div>
+
     </div>
 
   </div>
 
+
   <!-- FLOATING HEARTS -->
-  <span class="float-heart" style="left:8%;animation-delay:1s;">❤️</span>
-  <span class="float-heart" style="left:25%;animation-delay:4s;">💗</span>
-  <span class="float-heart" style="left:45%;animation-delay:2s;">💕</span>
-  <span class="float-heart" style="left:65%;animation-delay:5s;">❤️</span>
-  <span class="float-heart" style="left:85%;animation-delay:3s;">💖</span>
+
+  <span
+    class="float-heart"
+    style="left:8%;animation-delay:1s;"
+  >❤️</span>
+
+  <span
+    class="float-heart"
+    style="left:25%;animation-delay:4s;"
+  >💗</span>
+
+  <span
+    class="float-heart"
+    style="left:45%;animation-delay:2s;"
+  >💕</span>
+
+  <span
+    class="float-heart"
+    style="left:65%;animation-delay:5s;"
+  >❤️</span>
+
+  <span
+    class="float-heart"
+    style="left:85%;animation-delay:3s;"
+  >💖</span>
 
 </div>
 
+
 <script>
+
+/* =========================
+   OPEN LOVE PAGE
+========================= */
 
 function openLove(){
 
-  const code = document.getElementById("code").value.trim();
-  const error = document.getElementById("error");
+  const code =
+    document
+      .getElementById("code")
+      .value
+      .trim();
+
+  const error =
+    document.getElementById("error");
+
 
   /*
-    KÒD SEKRET LA:
+    CODE SECRET
     Nade and Baba
   */
 
-  if(code.toLowerCase() === "nade and baba"){
+  if(
+    code.toLowerCase() ===
+    "nade and baba"
+  ){
 
-    document.getElementById("login").style.display = "none";
-    document.getElementById("lovePage").style.display = "block";
+    document
+      .getElementById("login")
+      .style.display = "none";
+
+    document
+      .getElementById("lovePage")
+      .style.display = "block";
 
     startExtraHearts();
+
+    /*
+      Mete scroll la tounen
+      nan tèt paj la.
+    */
+
+    window.scrollTo({
+      top:0,
+      behavior:"instant"
+    });
 
   }else{
 
     error.style.display = "block";
 
-    setTimeout(()=>{
+    setTimeout(function(){
+
       error.style.display = "none";
+
     },2000);
+
   }
+
 }
 
-/* ENTER = VALIDATE */
-document.getElementById("code").addEventListener("keydown",function(e){
-  if(e.key === "Enter"){
-    openLove();
-  }
-});
 
-/* EXTRA HEART ANIMATION */
+/* =========================
+   ENTER KEY
+========================= */
+
+document
+  .getElementById("code")
+  .addEventListener(
+    "keydown",
+    function(e){
+
+      if(e.key === "Enter"){
+        openLove();
+      }
+
+    }
+  );
+
+
+/* =========================
+   EXTRA HEARTS
+========================= */
+
 function startExtraHearts(){
 
-  setInterval(()=>{
+  setInterval(function(){
 
-    const heart = document.createElement("div");
+    const heart =
+      document.createElement("div");
 
-    heart.innerHTML = ["❤️","💗","💕","💖","💘"][
-      Math.floor(Math.random()*5)
+    const hearts = [
+      "❤️",
+      "💗",
+      "💕",
+      "💖",
+      "💘"
     ];
 
+    heart.innerHTML =
+      hearts[
+        Math.floor(
+          Math.random()*hearts.length
+        )
+      ];
+
     heart.style.position = "fixed";
-    heart.style.left = Math.random()*100 + "vw";
+
+    heart.style.left =
+      Math.random()*100 + "vw";
+
     heart.style.bottom = "-40px";
-    heart.style.fontSize = (15 + Math.random()*25) + "px";
+
+    heart.style.fontSize =
+      (15 + Math.random()*25) + "px";
+
     heart.style.zIndex = "2";
+
     heart.style.pointerEvents = "none";
 
-    const duration = 5 + Math.random()*5;
+    const duration =
+      5 + Math.random()*5;
 
-    heart.style.animation = `floatUp ${duration}s linear forwards`;
+    heart.style.animation =
+      `floatUp ${duration}s linear forwards`;
 
-    document.getElementById("lovePage").appendChild(heart);
+    document
+      .getElementById("lovePage")
+      .appendChild(heart);
 
-    setTimeout(()=>{
+    setTimeout(function(){
+
       heart.remove();
+
     },duration*1000);
 
   },600);
+
 }
 
 </script>
